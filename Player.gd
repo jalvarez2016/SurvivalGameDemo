@@ -36,3 +36,12 @@ func _process(delta: float):
 		velocity.z = move_toward(velocity.z, 0, speed)
 	
 	move_and_slide()
+
+
+
+func _on_get_food_area_entered(area):
+	if area.is_in_group("apple"):
+		#area.queue_free()
+		area.get_parent().queue_free()
+		$PlayerNeeds/Hunger/NeedBar.value += 100
+	pass # Replace with function body.
