@@ -10,7 +10,7 @@ extends CharacterBody3D
 
 var angular_acceleration := 7
 var isAlive := true
-
+var is_drinking := false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
 	# Add the gravity.
@@ -36,8 +36,18 @@ func _process(delta: float):
 		velocity.z = move_toward(velocity.z, 0, speed)
 	
 	move_and_slide()
+	
+	if is_drinking:
+		drinking_water()
+	
+	if Input.is_action_just_pressed("drinking"):
+		is_drinking = true
+	if Input.is_action_just_released("drinking"):
+		is_drinking = false
 
-
+func drinking_water():
+	$MeshInstance3D/Botabag.drink()
+	$PlayerNeeds.drink(.02)
 
 func _on_get_food_area_entered(area):
 	if area.is_in_group("apple"):

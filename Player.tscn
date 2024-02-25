@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3htex6jisdfp"]
+[gd_scene load_steps=10 format=3 uid="uid://b3htex6jisdfp"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_1m0b5"]
 [ext_resource type="Script" path="res://Camera.gd" id="1_idhdw"]
+[ext_resource type="PackedScene" uid="uid://b55jfljucf8a3" path="res://Botabag.tscn" id="2_e4utt"]
 [ext_resource type="Script" path="res://Need.gd" id="3_e4071"]
 [ext_resource type="PackedScene" uid="uid://d0e3530spo1wr" path="res://NeedBar.tscn" id="3_eugpx"]
 [ext_resource type="Script" path="res://PlayerNeeds.gd" id="3_qvkwg"]
@@ -21,6 +22,9 @@ shape = SubResource("CapsuleShape3D_d7s26")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_0gsow")
+
+[node name="Botabag" parent="MeshInstance3D" instance=ExtResource("2_e4utt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.811777, 0.0557287, -0.00106591)
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

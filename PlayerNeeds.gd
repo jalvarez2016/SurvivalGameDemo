@@ -32,3 +32,6 @@ func _process(delta):
 
 func eat(amount):
 	hunger.add(amount)
+	
+func drink(amount):
+	thirst.add(amount)
