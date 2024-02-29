@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://d3d7pnx08254y"]
+[gd_scene load_steps=19 format=3 uid="uid://d3d7pnx08254y"]
 
 [ext_resource type="ArrayMesh" uid="uid://48fao5d1pfg2" path="res://Models/Terrain.obj" id="1_airyj"]
 [ext_resource type="PackedScene" uid="uid://b3htex6jisdfp" path="res://Player.tscn" id="2_7sfmu"]
 [ext_resource type="Script" path="res://DayNightCycle.gd" id="3_ihunq"]
 [ext_resource type="PackedScene" uid="uid://dr63yeyrhyy1u" path="res://Tree.tscn" id="4_hfepy"]
+[ext_resource type="PackedScene" uid="uid://sipuoxegur3t" path="res://apple.tscn" id="5_ptugt"]
+[ext_resource type="PackedScene" uid="uid://b704u7wvfbjax" path="res://well.tscn" id="6_rufvu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0gscs"]
 albedo_color = Color(0.592157, 0.780392, 0.294118, 1)
@@ -109,3 +111,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8624, 0, -19.3956)
 
 [node name="Tree6" parent="TreeContainer" instance=ExtResource("4_hfepy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="apple" parent="." instance=ExtResource("5_ptugt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45371, 2.14278, -6.77962)
+
+[node name="Well" parent="." instance=ExtResource("6_rufvu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.93846, 0.802176, 1.68244)

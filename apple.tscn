@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://sipuoxegur3t"]
+
+[ext_resource type="Script" path="res://apple.gd" id="1_ls0ao"]
+[ext_resource type="PackedScene" uid="uid://deqe5458s6d2d" path="res://Models/apple/apple.glb" id="2_e21qv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_oc8fp"]
+radius = 0.276304
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sdvph"]
+radius = 0.31863
+
+[node name="apple" type="RigidBody3D"]
+mass = 0.2
+gravity_scale = 1.66533e-16
+script = ExtResource("1_ls0ao")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.249994, -0.00174532, 0, 0.00174532, 0.249994, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0268659, 0.279996, 0)
+shape = SubResource("SphereShape3D_oc8fp")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[node name="Area3D" type="Area3D" parent="." groups=["apple"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0124736, 0.277734, 0)
+shape = SubResource("SphereShape3D_sdvph")
+
+[node name="apple" parent="." instance=ExtResource("2_e21qv")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

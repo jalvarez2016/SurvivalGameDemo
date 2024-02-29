@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3htex6jisdfp"]
+[gd_scene load_steps=10 format=3 uid="uid://b3htex6jisdfp"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_1m0b5"]
 [ext_resource type="Script" path="res://Camera.gd" id="1_idhdw"]
+[ext_resource type="PackedScene" uid="uid://b55jfljucf8a3" path="res://Botabag.tscn" id="2_e4utt"]
 [ext_resource type="Script" path="res://Need.gd" id="3_e4071"]
 [ext_resource type="PackedScene" uid="uid://d0e3530spo1wr" path="res://NeedBar.tscn" id="3_eugpx"]
 [ext_resource type="Script" path="res://PlayerNeeds.gd" id="3_qvkwg"]
@@ -9,6 +10,9 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d7s26"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0gsow"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8bvq5"]
+radius = 0.75
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("1_1m0b5")
@@ -18,6 +22,9 @@ shape = SubResource("CapsuleShape3D_d7s26")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_0gsow")
+
+[node name="Botabag" parent="MeshInstance3D" instance=ExtResource("2_e4utt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.811777, 0.0557287, -0.00106591)
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -31,7 +38,6 @@ script = ExtResource("1_idhdw")
 [node name="PlayerNeeds" type="Node3D" parent="."]
 script = ExtResource("3_qvkwg")
 no_hunger_health_decay = 3.0
-no_hunger_thirst_decay = 5.0
 
 [node name="Health" type="Node" parent="PlayerNeeds" node_paths=PackedStringArray("ui_bar")]
 script = ExtResource("3_e4071")
@@ -68,3 +74,11 @@ offset_top = 110.0
 offset_bottom = 137.0
 need_name = "Thirst"
 metadata/_edit_use_anchors_ = true
+
+[node name="player" type="Area3D" parent="." groups=["player"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
+shape = SubResource("CapsuleShape3D_8bvq5")
+
+[connection signal="area_entered" from="player" to="." method="_on_player_area_entered"]
+[connection signal="area_exited" from="player" to="." method="_on_player_area_exited"]

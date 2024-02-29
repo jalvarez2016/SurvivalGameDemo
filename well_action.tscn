@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwfyc8p6k4l7l"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_f13u4"]
+radius = 50.0
+height = 100.0
+
+[node name="Action" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 139.0
+offset_bottom = 123.0
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(63.9434, 62)
+mesh = SubResource("SphereMesh_f13u4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 43.9434
+offset_top = 14.0
+offset_right = 101.943
+offset_bottom = 102.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 62
+text = "E"

@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5qisx7s45wbs"]
+
+[ext_resource type="Script" path="res://Botabag_UI.gd" id="1_eh10x"]
+[ext_resource type="Script" path="res://Need.gd" id="2_fjckl"]
+[ext_resource type="Script" path="res://WaterLevel_UI.gd" id="3_immdn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n832e"]
+bg_color = Color(0.913725, 0.454902, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ox6kx"]
+bg_color = Color(0.133333, 0.619608, 1, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_eh10x")
+
+[node name="WaterLevel" type="Node" parent="." node_paths=PackedStringArray("ui_bar")]
+script = ExtResource("2_fjckl")
+max_value = 100.0
+start_value = 50.0
+decay_rate = 0.2
+ui_bar = NodePath("WaterLevel")
+
+[node name="WaterLevel" type="ProgressBar" parent="WaterLevel"]
+offset_left = 9.0
+offset_top = 10.0
+offset_right = 506.0
+offset_bottom = 505.0
+scale = Vector2(0.99873, 0.997636)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+theme_override_styles/background = SubResource("StyleBoxFlat_n832e")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ox6kx")
+value = 90.0
+fill_mode = 3
+script = ExtResource("3_immdn")
+metadata/_edit_group_ = true
