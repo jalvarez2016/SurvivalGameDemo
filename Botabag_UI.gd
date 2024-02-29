@@ -14,3 +14,6 @@ func _process(delta):
 
 func drink(amount):
 	water_level.subtract(amount)
+
+func fill(amount):
+	water_level.add(amount)

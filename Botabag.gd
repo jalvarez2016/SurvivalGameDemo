@@ -12,3 +12,7 @@ func _process(delta):
 	
 func drink():
 	$SubViewport/Control.drink(.02)
+
+
+func fill():
+	$SubViewport/Control.fill(.02)
