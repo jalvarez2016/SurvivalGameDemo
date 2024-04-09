@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://b704u7wvfbjax"]
+
+[ext_resource type="Script" path="res://well.gd" id="1_eyyyc"]
+[ext_resource type="PackedScene" uid="uid://dif58q4xivqcr" path="res://Models/well/well.glb" id="1_xplhm"]
+[ext_resource type="PackedScene" uid="uid://cwfyc8p6k4l7l" path="res://well_action.tscn" id="2_vfrwe"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cvn7r"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8qe14"]
+radius = 3.86289
+
+[node name="Well" type="Node3D"]
+script = ExtResource("1_eyyyc")
+
+[node name="well" parent="." instance=ExtResource("1_xplhm")]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="Action" parent="SubViewport" instance=ExtResource("2_vfrwe")]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.999994, 0.00345574, 0, -0.00345574, 0.999994, 0, 0, 0, 1, 0, 2.59052, 0)
+visible = false
+billboard = 1
+texture = SubResource("ViewportTexture_cvn7r")
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 120, 120)
+
+[node name="Area3D" type="Area3D" parent="." groups=["well"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_8qe14")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
